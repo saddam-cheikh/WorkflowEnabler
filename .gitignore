@@ -1,0 +1,78 @@
+# Ignore Visual Studio files
+.vs/
+*.user
+*.suo
+*.sln.docstates
+*.cache
+*.pdb
+*.obj
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+*.tlog
+*.VC.db
+*.VC.opendb
+*.vscode/
+.vscode/
+
+# Ignore build and output directories
+bin/
+obj/
+out/
+
+# Ignore NuGet Packages
+*.nupkg
+packages/
+!packages/repositories.config
+
+# Ignore .NET Core files
+project.lock.json
+project.assets.json
+global.json
+.nuget/
+
+# Ignore temporary files
+*.bak
+*.log
+*.tmp
+*.swp
+*.swo
+*.swn
+*~
+
+# Ignore Rider IDE (JetBrains)
+.idea/
+*.iml
+
+# Ignore MacOS system files
+.DS_Store
+
+# Ignore Linux system files
+*.swp
+
+# Ignore Windows system files
+Thumbs.db
+desktop.ini
+
+# Ignore user-specific configuration
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# Ignore Docker related files (if applicable)
+docker-compose.override.yml
+.dockerignore
+
+# Ignore Entity Framework migrations
+Migrations/
+
+# Ignore JetBrains Rider / Resharper files
+*.DotSettings
+**/JetBrains.ReSharper.Host/
+**/JetBrains.ReSharper.Shared/
+
+# Ignore logs and debug files
+logs/
+*.log
+*.tlog
