@@ -2,7 +2,7 @@
 
 🚀 **Manage your Dynamics 365 workflows quickly and easily!**
 
-This tool helps administrators and developers to activate, deactivate, and manage Power Automate & Dynamics 365 workflows efficiently.
+This tool helps administrators and developers to activate, deactivate, and manage Dynamics 365 workflows efficiently.
 
 ## Features
 - Load workflows from a selected solution

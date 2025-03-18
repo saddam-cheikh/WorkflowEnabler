@@ -150,25 +150,25 @@ namespace WorkflowEnabler
             headerStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.dgvWorkflows.ColumnHeadersDefaultCellStyle = headerStyle;
 
-            // Alternance de couleurs pour les lignes
+            // Alternating colors for lines
             DataGridViewCellStyle alternatingCellStyle = new DataGridViewCellStyle();
             alternatingCellStyle.BackColor = Color.FromArgb(245, 245, 245);
             this.dgvWorkflows.AlternatingRowsDefaultCellStyle = alternatingCellStyle;
 
-            // Personnalisation du style de sélection (remplacement du bleu par défaut)
+            // Customize selection style (replace default blue)
             this.dgvWorkflows.DefaultCellStyle.SelectionBackColor = Color.LightSteelBlue;
             this.dgvWorkflows.DefaultCellStyle.SelectionForeColor = Color.Black;
 
 
-            // Suppression des en-têtes de ligne (facultatif)
+            // Delete line headers
             this.dgvWorkflows.RowHeadersVisible = false;
 
-            // Style des bordures et de la grille
+            // borders and grid style
             this.dgvWorkflows.BorderStyle = BorderStyle.None;
             this.dgvWorkflows.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvWorkflows.GridColor = Color.LightGray;
 
-            // Vous pouvez aussi ajouter d'autres personnalisations (par exemple, modifier la hauteur des lignes, etc.)
+            // Other customizations  : change line heights
             this.dgvWorkflows.RowTemplate.Height = 30;
 
             // Create read-only columns

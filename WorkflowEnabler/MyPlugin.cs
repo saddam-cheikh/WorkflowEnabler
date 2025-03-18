@@ -8,9 +8,7 @@ using XrmToolBox.Extensibility;
 using XrmToolBox.Extensibility.Interfaces;
 
 namespace WorkflowEnabler
-{
-    // Do not forget to update version number and author (company attribute) in AssemblyInfo.cs class
-  
+{ 
     [Export(typeof(IXrmToolBoxPlugin)),
       ExportMetadata("Name", "Workflow Enabler"),
       ExportMetadata("Description", "Manage your Dynamics 365 workflows quickly and easily. Activate, deactivate, filter, search, and export workflows from a single interface."),
