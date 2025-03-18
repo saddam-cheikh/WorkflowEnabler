@@ -29,7 +29,7 @@ namespace WorkflowEnabler
         private void MyPluginControl_Load(object sender, EventArgs e)
         {
             ShowInfoNotification("This plugin allows you to manage workflows and Power Automate flows. Feature requests and contributions are welcome via our GitHub repository.",
-                new Uri("https://github.com/MscrmTools/XrmToolBox"));
+                new Uri("https://github.com/saddam-cheikh/WorkflowEnabler"));
 
             if (!SettingsManager.Instance.TryLoad(GetType(), out mySettings))
             {
