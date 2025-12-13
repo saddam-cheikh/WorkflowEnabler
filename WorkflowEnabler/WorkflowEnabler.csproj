@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>image32_HmF_icon.ico</ApplicationIcon>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="McTools.Xrm.Connection, Version=1.2023.6.56, Culture=neutral, PublicKeyToken=96037217801d9658, processorArchitecture=MSIL">
@@ -168,6 +168,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\ResultsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ResultsForm.Designer.cs">
+      <DependentUpon>ResultsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SolutionPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SolutionPicker.Designer.cs">
+      <DependentUpon>SolutionPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListViewItemComparer.cs" />
     <Compile Include="MyPlugin.cs" />
     <Compile Include="MyPluginControl.cs">
       <SubType>UserControl</SubType>
@@ -188,6 +201,14 @@
   <ItemGroup>
     <Content Include="icon.ico" />
     <Content Include="image32_HmF_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\SolutionPicker.resx">
+      <DependentUpon>SolutionPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyPluginControl.resx">
+      <DependentUpon>MyPluginControl.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using static ScintillaNET.Style;
 
 namespace WorkflowEnabler
 {
@@ -31,9 +32,6 @@ namespace WorkflowEnabler
         private DataGridViewTextBoxColumn colOwner;
         private DataGridViewTextBoxColumn colIsManaged;
 
-        // Declaration of textbox for log
-        private TextBox txtLog;
-
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -41,215 +39,239 @@ namespace WorkflowEnabler
             base.Dispose(disposing);
         }
 
+
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-
-            // -----------------------------
-            // Configuration of the ToolStrip (ribbon)
-            // -----------------------------
-            this.toolStrip = new ToolStrip();
-            this.toolStrip.Dock = DockStyle.Top;
-            // Using Calibri for a more user friendly look
-            this.toolStrip.Font = new Font("Calibri", 11F, FontStyle.Regular);
-            this.toolStrip.GripStyle = ToolStripGripStyle.Hidden;
-
-            // "Load Workflows" button
-            this.tsbLoadWorkflows = new ToolStripButton();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.tsbLoadWorkflows = new System.Windows.Forms.ToolStripButton();
+            this.tsbActivate = new System.Windows.Forms.ToolStripButton();
+            this.tsbDeactivate = new System.Windows.Forms.ToolStripButton();
+            this.tsbExport = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.tslSearch = new System.Windows.Forms.ToolStripLabel();
+            this.tstxtSearch = new System.Windows.Forms.ToolStripTextBox();
+            this.tslFilter = new System.Windows.Forms.ToolStripLabel();
+            this.tscmbFilterProcessType = new System.Windows.Forms.ToolStripComboBox();
+            this.dgvWorkflows = new System.Windows.Forms.DataGridView();
+            this.colNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatut = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCreatedOn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colModifiedOn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOwner = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIsManaged = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvWorkflows)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // toolStrip
+            // 
+            this.toolStrip.Font = new System.Drawing.Font("Calibri", 11F);
+            this.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbLoadWorkflows,
+            this.tsbActivate,
+            this.tsbDeactivate,
+            this.tsbExport,
+            this.toolStripSeparator,
+            this.tslSearch,
+            this.tstxtSearch,
+            this.tslFilter,
+            this.tscmbFilterProcessType});
+            this.toolStrip.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.Size = new System.Drawing.Size(900, 30);
+            this.toolStrip.TabIndex = 1;
+            // 
+            // tsbLoadWorkflows
+            // 
+            this.tsbLoadWorkflows.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbLoadWorkflows.Name = "tsbLoadWorkflows";
+            this.tsbLoadWorkflows.Size = new System.Drawing.Size(127, 27);
             this.tsbLoadWorkflows.Text = "🔄 Load Workflows";
-            this.tsbLoadWorkflows.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            this.tsbLoadWorkflows.Click += new EventHandler(this.btnLoadWorkflows_Click);
-
-            // "Activate" button
-            this.tsbActivate = new ToolStripButton();
+            this.tsbLoadWorkflows.Click += new System.EventHandler(this.btnLoadWorkflows_Click);
+            // 
+            // tsbActivate
+            // 
+            this.tsbActivate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbActivate.Name = "tsbActivate";
+            this.tsbActivate.Size = new System.Drawing.Size(80, 27);
             this.tsbActivate.Text = "✅ Activate";
-            this.tsbActivate.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            this.tsbActivate.Click += new EventHandler(this.btnActivate_Click);
-
-            // "Deactivate" button
-            this.tsbDeactivate = new ToolStripButton();
+            this.tsbActivate.Click += new System.EventHandler(this.btnActivate_Click);
+            // 
+            // tsbDeactivate
+            // 
+            this.tsbDeactivate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbDeactivate.Name = "tsbDeactivate";
+            this.tsbDeactivate.Size = new System.Drawing.Size(95, 27);
             this.tsbDeactivate.Text = "⛔ Deactivate";
-            this.tsbDeactivate.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            this.tsbDeactivate.Click += new EventHandler(this.btnDeactivate_Click);
-
-            // "Export CSV" button
-            this.tsbExport = new ToolStripButton();
+            this.tsbDeactivate.Click += new System.EventHandler(this.btnDeactivate_Click);
+            // 
+            // tsbExport
+            // 
+            this.tsbExport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbExport.Name = "tsbExport";
+            this.tsbExport.Size = new System.Drawing.Size(79, 27);
             this.tsbExport.Text = "Export CSV";
-            this.tsbExport.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            this.tsbExport.Click += new EventHandler(this.btnExport_Click);
-
-            // Separator to separate actions from filters/search
-            this.toolStripSeparator = new ToolStripSeparator();
-
-            // Search element
-            this.tslSearch = new ToolStripLabel();
+            this.tsbExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // toolStripSeparator
+            // 
+            this.toolStripSeparator.Name = "toolStripSeparator";
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 30);
+            // 
+            // tslSearch
+            // 
+            this.tslSearch.Font = new System.Drawing.Font("Calibri", 11F);
+            this.tslSearch.Name = "tslSearch";
+            this.tslSearch.Size = new System.Drawing.Size(71, 27);
             this.tslSearch.Text = "🔍 Search:";
-            this.tslSearch.Font = new Font("Calibri", 11F, FontStyle.Regular);
-
-            this.tstxtSearch = new ToolStripTextBox();
-            this.tstxtSearch.Size = new Size(200, 25);
-            this.tstxtSearch.Font = new Font("Calibri", 11F, FontStyle.Regular);
-            this.tstxtSearch.TextChanged += new EventHandler(this.txtSearch_TextChanged);
-
-            // Filter element
-            this.tslFilter = new ToolStripLabel();
+            // 
+            // tstxtSearch
+            // 
+            this.tstxtSearch.Font = new System.Drawing.Font("Calibri", 11F);
+            this.tstxtSearch.Name = "tstxtSearch";
+            this.tstxtSearch.Size = new System.Drawing.Size(200, 30);
+            this.tstxtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // tslFilter
+            // 
+            this.tslFilter.Font = new System.Drawing.Font("Calibri", 11F);
+            this.tslFilter.Name = "tslFilter";
+            this.tslFilter.Size = new System.Drawing.Size(94, 27);
             this.tslFilter.Text = "Filter by type:";
-            this.tslFilter.Font = new Font("Calibri", 11F, FontStyle.Regular);
-
-            this.tscmbFilterProcessType = new ToolStripComboBox();
-            this.tscmbFilterProcessType.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.tscmbFilterProcessType.Font = new Font("Calibri", 11F, FontStyle.Regular);
+            // 
+            // tscmbFilterProcessType
+            // 
+            this.tscmbFilterProcessType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tscmbFilterProcessType.Font = new System.Drawing.Font("Calibri", 11F);
             this.tscmbFilterProcessType.Items.AddRange(new object[] {
-                "All",
-                "Workflow",
-                "Dialog",
-                "Business Rule",
-                "Action",
-                "BPF (Business Process Flow)",
-                "Cloud Flow (Modern Flow)",
-                "Desktop Flow",
-                "AI Flow",
-                "Web Client API Flow"
-            });
-            this.tscmbFilterProcessType.SelectedIndex = 0;
-            this.tscmbFilterProcessType.Size = new Size(180, 25);
-            this.tscmbFilterProcessType.SelectedIndexChanged += new EventHandler(this.cmbFilterProcessType_SelectedIndexChanged);
-
-            // Add items to the ToolStrip in the desired order
-            this.toolStrip.Items.Add(this.tsbLoadWorkflows);
-            this.toolStrip.Items.Add(this.tsbActivate);
-            this.toolStrip.Items.Add(this.tsbDeactivate);
-            this.toolStrip.Items.Add(this.tsbExport);
-            this.toolStrip.Items.Add(this.toolStripSeparator);
-            this.toolStrip.Items.Add(this.tslSearch);
-            this.toolStrip.Items.Add(this.tstxtSearch);
-            this.toolStrip.Items.Add(this.tslFilter);
-            this.toolStrip.Items.Add(this.tscmbFilterProcessType);
-
-            // -----------------------------
-            // Configuration of the DataGridView
-            // -----------------------------
-            this.dgvWorkflows = new DataGridView();
-            this.dgvWorkflows.Dock = DockStyle.Fill;
-            this.dgvWorkflows.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvWorkflows.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            this.dgvWorkflows.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvWorkflows.BackgroundColor = Color.White;
+            "All",
+            "Workflow",
+            "Dialog",
+            "Business Rule",
+            "Action",
+            "BPF (Business Process Flow)",
+            "Cloud Flow (Modern Flow)",
+            "Desktop Flow",
+            "AI Flow",
+            "Web Client API Flow"});
+            this.tscmbFilterProcessType.Name = "tscmbFilterProcessType";
+            this.tscmbFilterProcessType.Size = new System.Drawing.Size(180, 26);
+            this.tscmbFilterProcessType.Text = "All";
+            this.tscmbFilterProcessType.SelectedIndexChanged += new System.EventHandler(this.cmbFilterProcessType_SelectedIndexChanged);
+            // 
+            // dgvWorkflows
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.dgvWorkflows.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvWorkflows.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvWorkflows.BackgroundColor = System.Drawing.Color.White;
+            this.dgvWorkflows.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvWorkflows.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.dgvWorkflows.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvWorkflows.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvWorkflows.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colNom,
+            this.colID,
+            this.colType,
+            this.colStatut,
+            this.colCreatedOn,
+            this.colModifiedOn,
+            this.colOwner,
+            this.colIsManaged});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvWorkflows.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvWorkflows.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvWorkflows.EnableHeadersVisualStyles = false;
-
-
-            // Souscription à l'événement CellFormatting
-            this.dgvWorkflows.CellFormatting += new DataGridViewCellFormattingEventHandler(this.dgvWorkflows_CellFormatting);
-
-
-            // Personnalisation des en-têtes
-            DataGridViewCellStyle headerStyle = new DataGridViewCellStyle();
-            headerStyle.BackColor = Color.FromArgb(240, 240, 240);
-            headerStyle.Font = new Font("Calibri", 11F, FontStyle.Bold);
-            headerStyle.ForeColor = Color.Black;
-            headerStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            this.dgvWorkflows.ColumnHeadersDefaultCellStyle = headerStyle;
-
-            // Alternating colors for lines
-            DataGridViewCellStyle alternatingCellStyle = new DataGridViewCellStyle();
-            alternatingCellStyle.BackColor = Color.FromArgb(245, 245, 245);
-            this.dgvWorkflows.AlternatingRowsDefaultCellStyle = alternatingCellStyle;
-
-            // Customize selection style (replace default blue)
-            this.dgvWorkflows.DefaultCellStyle.SelectionBackColor = Color.LightSteelBlue;
-            this.dgvWorkflows.DefaultCellStyle.SelectionForeColor = Color.Black;
-
-
-            // Delete line headers
+            this.dgvWorkflows.GridColor = System.Drawing.Color.LightGray;
+            this.dgvWorkflows.Location = new System.Drawing.Point(0, 30);
+            this.dgvWorkflows.Name = "dgvWorkflows";
             this.dgvWorkflows.RowHeadersVisible = false;
-
-            // borders and grid style
-            this.dgvWorkflows.BorderStyle = BorderStyle.None;
-            this.dgvWorkflows.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvWorkflows.GridColor = Color.LightGray;
-
-            // Other customizations  : change line heights
             this.dgvWorkflows.RowTemplate.Height = 30;
-
-            // Create read-only columns
-            this.colNom = new DataGridViewTextBoxColumn();
+            this.dgvWorkflows.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvWorkflows.Size = new System.Drawing.Size(900, 570);
+            this.dgvWorkflows.TabIndex = 0;
+            this.dgvWorkflows.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvWorkflows_CellFormatting);
+            // 
+            // colNom
+            // 
             this.colNom.HeaderText = "Name";
             this.colNom.Name = "colNom";
             this.colNom.ReadOnly = true;
-
-            this.colID = new DataGridViewTextBoxColumn();
+            // 
+            // colID
+            // 
             this.colID.HeaderText = "ID";
             this.colID.Name = "colID";
             this.colID.ReadOnly = true;
-            this.colID.Visible = false; // Hidden, used for internal processing
-
-            this.colType = new DataGridViewTextBoxColumn();
+            this.colID.Visible = false;
+            // 
+            // colType
+            // 
             this.colType.HeaderText = "Type";
             this.colType.Name = "colType";
             this.colType.ReadOnly = true;
-            this.colType.Width = 150;
-
-            this.colStatut = new DataGridViewTextBoxColumn();
+            // 
+            // colStatut
+            // 
             this.colStatut.HeaderText = "Status";
             this.colStatut.Name = "colStatut";
             this.colStatut.ReadOnly = true;
-
-            this.colCreatedOn = new DataGridViewTextBoxColumn();
+            // 
+            // colCreatedOn
+            // 
             this.colCreatedOn.HeaderText = "Created On";
             this.colCreatedOn.Name = "colCreatedOn";
             this.colCreatedOn.ReadOnly = true;
-
-            this.colModifiedOn = new DataGridViewTextBoxColumn();
+            // 
+            // colModifiedOn
+            // 
             this.colModifiedOn.HeaderText = "Modified On";
             this.colModifiedOn.Name = "colModifiedOn";
             this.colModifiedOn.ReadOnly = true;
-
-            this.colOwner = new DataGridViewTextBoxColumn();
+            // 
+            // colOwner
+            // 
             this.colOwner.HeaderText = "Owner";
             this.colOwner.Name = "colOwner";
             this.colOwner.ReadOnly = true;
-
-            this.colIsManaged = new DataGridViewTextBoxColumn();
+            // 
+            // colIsManaged
+            // 
             this.colIsManaged.HeaderText = "Managed";
             this.colIsManaged.Name = "colIsManaged";
             this.colIsManaged.ReadOnly = true;
-
-            // Add columns to the DataGridView (order matters)
-            this.dgvWorkflows.Columns.AddRange(new DataGridViewColumn[] {
-                this.colNom,
-                this.colID,
-                this.colType,
-                this.colStatut,
-                this.colCreatedOn,
-                this.colModifiedOn,
-                this.colOwner,
-                this.colIsManaged
-            });
-
-            // -----------------------------
-            // Initialize the log TextBox (simulating a CMD-like console)
-            // -----------------------------
-            this.txtLog = new TextBox();
-            this.txtLog.Multiline = true;
-            this.txtLog.ScrollBars = ScrollBars.Both;
-            this.txtLog.Font = new Font("Calibri", 10F);
-            this.txtLog.Dock = DockStyle.Bottom;
-            this.txtLog.Height = 150; // Adjustable height
-            this.txtLog.ReadOnly = true;
-            this.txtLog.BackColor = Color.Black;
-            this.txtLog.ForeColor = Color.LightGreen;
-
-            // -----------------------------
-            // Add controls to the UserControl
-            // -----------------------------
+           
+            // 
+            // MyPluginControl
+            // 
             this.Controls.Add(this.dgvWorkflows);
             this.Controls.Add(this.toolStrip);
-            this.Controls.Add(this.txtLog);
-
-            // UserControl properties
             this.Name = "MyPluginControl";
-            this.Size = new Size(900, 600);
-            this.Load += new EventHandler(this.MyPluginControl_Load);
+            this.Size = new System.Drawing.Size(900, 600);
+            this.Load += new System.EventHandler(this.MyPluginControl_Load);
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvWorkflows)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
+
     }
 }
