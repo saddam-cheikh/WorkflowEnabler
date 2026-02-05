@@ -13,6 +13,17 @@ using System.Windows.Forms;
 
 namespace WorkflowEnabler.Forms
 {
+    /*
+     * This file is based on code from MsCrmTools.MetadataBrowser
+     * https://github.com/MscrmTools/MsCrmTools.MetadataBrowser
+     *
+     * Original author: MsCrmTools contributors
+     * License: MIT
+     *
+     * Modifications:
+     * - Adapted for WorkflowEnabler
+     * - Minor changes in selection logic and UI behavior
+     */
     public partial class SolutionPicker : Form
     {
 
