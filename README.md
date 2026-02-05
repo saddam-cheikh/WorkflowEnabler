@@ -60,3 +60,13 @@ The action will be applied to **all selected workflows in one operation**.
 ---
 
 Happy automating 🚀
+
+
+## Third-party code
+
+This project includes adapted code from:
+
+- MsCrmTools.MetadataBrowser  
+  https://github.com/MscrmTools/MsCrmTools.MetadataBrowser  
+  Licensed under the MIT License.
+
